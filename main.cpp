@@ -1,7 +1,8 @@
 #include <iostream>
 #include <ctime>
-#include "interfaz.h"
-#include "logica.h"
+#include <cstdlib>
+#include "menu.h"
+#include "juego.h"
 
 using namespace std;
 

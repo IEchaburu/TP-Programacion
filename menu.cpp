@@ -1,5 +1,5 @@
 #include <iostream>
-#include "interfaz.h"
+#include "menu.h"
 using namespace std;
 
 int mostrarMenuPrincipal() {

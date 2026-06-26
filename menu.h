@@ -1,5 +1,5 @@
-#ifndef INTERFAZ_H
-#define INTERFAZ_H
+#ifndef MENU_H
+#define MENU_H
 
 // Muestra el menú principal y devuelve la opción elegida
 int mostrarMenuPrincipal();

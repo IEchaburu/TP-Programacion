@@ -1,5 +1,5 @@
-#ifndef LOGICA_H
-#define LOGICA_H
+#ifndef JUEGO_H
+#define JUEGO_H
 
 // Genera un número aleatorio entre 1 y 6
 int lanzarDado();

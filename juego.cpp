@@ -1,6 +1,6 @@
 #include <iostream>
 #include <cstdlib>
-#include "logica.h"
+#include "juego.h"
 using namespace std;
 
 int lanzarDado() {
