@@ -4,6 +4,12 @@
 // Genera un número aleatorio entre 1 y 6
 int lanzarDado();
 
+// Muestra las estadisticas de la partida
+void mostrarEstadisticas(char nombreRecord[], int puntajeRecord);
+
+// Pide y almacena el nombre de un jugador
+void pedirNombre(char nombre[], int numeroJugador);
+
 // Carga el vector de dados (aleatorio o manual según modoSimulado)
 void cargarDadosTormenta(int dados[], int cantidadDisponible, bool modoSimulado);
 void cargarDadosViento(int vientos[], bool modoSimulado);

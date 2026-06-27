@@ -1,0 +1,21 @@
+# depslib dependency file v1.0
+1782601526 source:c:\users\inaki\utn\tup\cuatri-1\programacion-1\tp-integrador\cazadores_de_tormentas\juego.cpp
+	<iostream>
+	<cstdlib>
+	"juego.h"
+
+1782600546 c:\users\inaki\utn\tup\cuatri-1\programacion-1\tp-integrador\cazadores_de_tormentas\juego.h
+
+1782601969 source:c:\users\inaki\utn\tup\cuatri-1\programacion-1\tp-integrador\cazadores_de_tormentas\menu.cpp
+	<iostream>
+	<cstring>
+	"menu.h"
+	"juego.h"
+
+1782600659 c:\users\inaki\utn\tup\cuatri-1\programacion-1\tp-integrador\cazadores_de_tormentas\menu.h
+
+1782600378 source:c:\users\inaki\utn\tup\cuatri-1\programacion-1\tp-integrador\cazadores_de_tormentas\main.cpp
+	<iostream>
+	<ctime>
+	"menu.h"
+

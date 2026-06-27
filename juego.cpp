@@ -32,6 +32,18 @@ int procesarTirada(int dados[], int cantidadDisponible, int vientos[], int &dado
     return sumaTirada; 
 }
 
+
+void mostrarEstadisticas(char nombreRecord[], int puntajeRecord) {
+    cout << "--- ESTADISTICAS ---\n";
+    if (puntajeRecord == 0) {
+        cout << "No hay records registrados aun.\n";
+    } else {
+        cout << "RANKING JUGADOR PUNTAJE\n";
+        cout << "1. " << nombreRecord << " - " << puntajeRecord << " PUNTOS\n";
+    }
+}
+
+
 void jugarPartida(int modo, char nombreRecord[], int &puntajeRecord, bool modoSimulado) {
     // Estructura de las 3 rondas. 
     // Uso de vectores fijos obligatorios: int dadosTormenta[5]; int dadosViento[2];
