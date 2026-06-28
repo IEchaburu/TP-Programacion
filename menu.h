@@ -11,6 +11,6 @@ void mostrarCreditos();
 void opcionesMenuPrincipal();
 
 //Muestra el modo de juego
-void elegirModoJuego();
+void elegirModoJuego(char nombreRecord[], int &puntajeRecord);
 
 #endif

@@ -37,8 +37,31 @@ void mostrarModoJuego() {
     cout << "Seleccione una opcion: " << endl;
 }
 
-void menuPrincipal() {
+void elegirModoJuego(char nombreRecord[], int &puntajeRecord) {
+    while (true) {
+
+        int modoJuego;
+        system("cls");
+        mostrarModoJuego();
+        cin >> modoJuego;
     
+        switch (modoJuego) {
+            case 0:
+                return;
+            case 1:
+                jugarModoUnJugador(nombreRecord, puntajeRecord, false);
+                break;
+            case 2:
+                jugarModoDosJugadores(nombreRecord, puntajeRecord);
+                break;
+        }
+    }
+}
+
+void menuPrincipal() {
+    char nombreRecord[50] = "";
+    int puntajeRecord = 0;
+
     while (true) {
         int opcion;
 
@@ -52,10 +75,11 @@ void menuPrincipal() {
                 return;
            
             case 1:
-                //jugar();
+                elegirModoJuego(nombreRecord, puntajeRecord);
                 break;
             case 2:
-                //mostrarEstadisticas();
+                mostrarEstadisticas(nombreRecord, puntajeRecord);
+                system("pause");
                 break;
             case 3:
                 mostrarCreditos();
