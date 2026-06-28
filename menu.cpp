@@ -52,7 +52,10 @@ void elegirModoJuego(char nombreRecord[], int &puntajeRecord) {
                 jugarModoUnJugador(nombreRecord, puntajeRecord, false);
                 break;
             case 2:
-                jugarModoDosJugadores(nombreRecord, puntajeRecord);
+                jugarModoDosJugadores(nombreRecord, puntajeRecord, false);
+                break;
+            case 9: // se mantiene oculto, es para testing
+                jugarModoUnJugador(nombreRecord, puntajeRecord, true);
                 break;
         }
     }

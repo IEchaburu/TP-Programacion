@@ -67,20 +67,6 @@ int compararDados(int tiradaDados[], int &dadosDisponibles, int viento1, int vie
     return puntaje;
 }
 
-// -1 es "desastre total" y los punto se tiene que restableser a 0 (puntos=0)
-// -2 es "tormeta perfecta" los punto se tiene que multiplicar por dos (puntos*2)
-// 0 es no hay cambios en la puntuacion
-
- //Destruccion total
-
-int resultado(int dadosDisponibles, int dadosValidos[], int contadorValido) {
-    //Destruccion total
-    if (dadosDisponibles == 0) {
-        return -1;
-    }
-
-    return 0;
-}
 
 bool esTormentaPerfecta(int tiradaDados[], int cantidadTirada, int viento1, int viento2) {
 
@@ -212,7 +198,16 @@ char preguntarRiesgo() {
 }
 
 bool preguntarOtraPartida() {
-    return preguntarRiesgo() == 'S';
+
+    char respuesta;
+
+    do {
+        cout << "Desea jugar otra partida? (S/N): ";
+        cin >> respuesta;
+        respuesta = toupper(respuesta);
+    } while (respuesta != 'S' && respuesta != 'N');
+
+    return respuesta == 'S';
 }
 
 
@@ -281,24 +276,55 @@ void jugarModoUnJugador(char nombreRecord[], int &puntajeRecord, bool modoSimula
 
 // Modo de juego dos jugadores.
 
-void jugarModoDosJugadores(char nombreRecord[], int &puntajeRecord) {
+void jugarModoDosJugadores(char nombreRecord[], int &puntajeRecord, bool modoSimulado) {
+    
     char nombreJugador1[TAMANO_NOMBRE];
     char nombreJugador2[TAMANO_NOMBRE];
+    bool jugarDeNuevo;
 
-    int puntajeJugador1 = 0;
-    int puntajeJugador2 = 0;
+    do {
+        int puntajeJugador1 = 0;
+        int puntajeJugador2 = 0;
 
-    pedirNombre(nombreJugador1, 1);
-    pedirNombre(nombreJugador2, 2);
-    // Estructura de las 3 rondas. 
-    // Uso de vectores fijos obligatorios: int dadosTormenta[5]; int dadosViento[2];
-    // Al finalizar, comparar el puntaje con puntajeRecord y actualizar de ser necesario.
-    // Mostrar el puntaje final y las estadisticas de la partida.
-    // Preguntar si desea jugar otra partida.
-    // Si desea jugar otra partida, repetir el proceso.
-    // Si no desea jugar otra partida, salir del juego.
-    //cout << "Puntaje final: " << puntajeTotal << endl;
-    actualizarRecord(nombreRecord, puntajeRecord, nombreJugador1, puntajeJugador1);
-    actualizarRecord(nombreRecord, puntajeRecord, nombreJugador2, puntajeJugador2);
-}   
+        pedirNombre(nombreJugador1, 1);
+        pedirNombre(nombreJugador2, 2);
 
+        for (int ronda = 1; ronda <= CANTIDAD_RONDAS; ronda++) {
+            int vientos[CANTIDAD_DADOS_VIENTO];
+
+            cout << "\n========== RONDA " << ronda << " ==========" << endl;
+            cargarDadosViento(vientos, modoSimulado);
+
+            int ptsRonda1 = jugarTurnoRonda(nombreJugador1, vientos, modoSimulado);
+            int ptsRonda2 = jugarTurnoRonda(nombreJugador2, vientos, modoSimulado);
+
+            puntajeJugador1 += ptsRonda1;
+            puntajeJugador2 += ptsRonda2;
+
+            cout << "\n--- Resumen ronda " << ronda << " ---" << endl;
+            cout << nombreJugador1 << ": +" << ptsRonda1
+                 << " (total: " << puntajeJugador1 << ")" << endl;
+            cout << nombreJugador2 << ": +" << ptsRonda2
+                 << " (total: " << puntajeJugador2 << ")" << endl;
+        }
+
+        cout << "\nPartida finalizada." << endl;
+        cout << nombreJugador1 << ": " << puntajeJugador1 << endl;
+        cout << nombreJugador2 << ": " << puntajeJugador2 << endl;
+
+        if (puntajeJugador1 > puntajeJugador2) {
+            cout << "Ganador: " << nombreJugador1 << endl;
+        } else if (puntajeJugador2 > puntajeJugador1) {
+            cout << "Ganador: " << nombreJugador2 << endl;
+        } else {
+            cout << "Empate." << endl;
+        }
+
+        actualizarRecord(nombreRecord, puntajeRecord, nombreJugador1, puntajeJugador1);
+        actualizarRecord(nombreRecord, puntajeRecord, nombreJugador2, puntajeJugador2);
+        mostrarEstadisticas(nombreRecord, puntajeRecord);
+
+        jugarDeNuevo = preguntarOtraPartida();
+
+    } while (jugarDeNuevo);
+}

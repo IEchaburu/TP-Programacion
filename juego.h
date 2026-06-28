@@ -31,7 +31,6 @@ bool preguntarOtraPartida();
 
 // LOGICA DEL JUEGO //
 bool esTormentaPerfecta(int tiradaDados[], int cantidadTirada, int viento1, int viento2);
-int resultado(int dadosDisponibles, int dadosValidos[], int contadorValido);
 
 
 
@@ -51,10 +50,9 @@ int procesarTirada(int dados[], int cantidadDisponible, int vientos[], int &dado
 
 // Controla el desarrollo de una ronda completa (Modo 1 o 2 jugadores)
 int jugarTurnoRonda(const char nombreJugador[], int vientos[], bool modoSimulado);
-int jugarRonda(const char nombreJugador[], int vientos[], bool modoSimulado);
 
 // Controla el desarrollo de una partida completa (Modo 1 o 2 jugadores)
 void jugarModoUnJugador(char nombreRecord[], int &puntajeRecord, bool modoSimulado);
-void jugarModoDosJugadores(char nombreRecord[], int &puntajeRecord);
+void jugarModoDosJugadores(char nombreRecord[], int &puntajeRecord, bool modoSimulado);
 
 #endif
