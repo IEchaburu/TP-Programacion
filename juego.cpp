@@ -11,7 +11,10 @@ int lanzarDado() {
 /// FUNCIONES INICIO DE PARTIDA ///
 void pedirNombre(char nombre[], int numeroJugador) {
     cout << "Ingrese el nombre del jugador " << numeroJugador << ": ";
-    cin.ignore(1000, '\n'); // Ignora el salto de linea anterior
+    
+    if (cin.peek() == '\n') {
+        cin.ignore(1000, '\n'); // Ignora el salto de linea anterior
+    }
     cin.getline(nombre, TAMANO_NOMBRE);
 }
 
@@ -277,7 +280,7 @@ void jugarModoUnJugador(char nombreRecord[], int &puntajeRecord, bool modoSimula
 // Modo de juego dos jugadores.
 
 void jugarModoDosJugadores(char nombreRecord[], int &puntajeRecord, bool modoSimulado) {
-    
+
     char nombreJugador1[TAMANO_NOMBRE];
     char nombreJugador2[TAMANO_NOMBRE];
     bool jugarDeNuevo;
