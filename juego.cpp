@@ -124,7 +124,7 @@ int procesarTirada(int dados[], int cantidadDisponible, int vientos[], int &dado
         return 0;
     } 
 
-    if (esTormentaPerfecta(dadosValidos, cantidadTirada, vientos[0], vientos[1])) {
+    if (esTormentaPerfecta(dados, cantidadTirada, vientos[0], vientos[1])) {
         tormentaPerfecta = true;
         return puntajeTirada * 2;
     }
