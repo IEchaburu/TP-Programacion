@@ -79,19 +79,29 @@ int resultado(int dadosDisponibles, int dadosValidos[], int contadorValido) {
         return -1;
     }
 
-    int auxiliarDado = dadosValidos[0];
-    bool tormentaPerfecta = true;
-    for (int i = 1; i < contadorValido; i++) {
-        if (dadosValidos[i] != auxiliarDado) {
-            tormentaPerfecta = false;
-            break;
+    return 0;
+}
+
+bool esTormentaPerfecta(int tiradaDados[], int cantidadTirada, int viento1, int viento2) {
+
+    if (cantidadTirada <= 0) {
+        return false;
+    }
+
+    int valorReferencia = tiradaDados[0];
+
+    // Aca se verifica si el primer dado es un viento bloqueado
+    if (valorReferencia == viento1 || valorReferencia == viento2) {
+        return false;
+    }
+
+    for (int i = 1; i < cantidadTirada; i++) {
+        if (tiradaDados[i] != valorReferencia) {
+            return false;
         }
     }
 
-    if (tormentaPerfecta) {
-        return -2;
-    }
-    return 0;
+    return true;
 }
 
 /// Logica de la tirada
@@ -100,19 +110,21 @@ int procesarTirada(int dados[], int cantidadDisponible, int vientos[], int &dado
     int dadosValidos[CANTIDAD_DADOS_TORMENTA];
     int contadorValido = 0;
     int disponibles = cantidadDisponible;
+    int cantidadTirada = cantidadDisponible;
 
     tormentaPerfecta = false;
     destruccionTotal = false;
 
     int puntajeTirada = compararDados(dados, disponibles, vientos[0], vientos[1], dadosValidos, contadorValido);
-    int resultadoTirada = resultado(disponibles, dadosValidos, contadorValido);
 
-    if (resultadoTirada == -1) {
+    dadosRestantes = disponibles;
+
+    if (disponibles == 0) {
         destruccionTotal = true;
         return 0;
     } 
 
-    if (resultadoTirada == -2) {
+    if (esTormentaPerfecta(dadosValidos, cantidadTirada, vientos[0], vientos[1])) {
         tormentaPerfecta = true;
         return puntajeTirada * 2;
     }

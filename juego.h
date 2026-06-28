@@ -29,8 +29,11 @@ char preguntarRiesgo();
 bool preguntarOtraPartida();
 
 
-
 // LOGICA DEL JUEGO //
+bool esTormentaPerfecta(int tiradaDados[], int cantidadTirada, int viento1, int viento2);
+int resultado(int dadosDisponibles, int dadosValidos[], int contadorValido);
+
+
 
 // Carga el vector de dados (aleatorio o manual según modoSimulado)
 // Carga los dados de tormenta (manual o aleatorio)
@@ -41,8 +44,6 @@ void cargarDadosViento(int vientos[], bool modoSimulado);
 // Compara tirada vs viento, suma puntos, guarda dados validos, reduce disponibles
 int compararDados(int tiradaDados[], int &dadosDisponibles, int viento1, int viento2, int dadosValidos[], int &contadorValido);
 
-// Devuelve: -1 destruccion total, -2 tormenta perfecta, 0 normal
-int resultadoTirada(int dadosDisponibles, int dadosValidos[], int contadorValido);
 
 // Compara dados de tormenta con los de viento. 
 // Modifica la cantidad disponible (resta bloqueados) y devuelve el puntaje de la tirada.
