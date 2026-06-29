@@ -15,7 +15,7 @@ void mostrarCreditos() {
     cout << "-LEGAJO    APELLIDO    NOMBRE-" << endl;
     cout << "-34488     hernandez cabral      juan-" << endl;
     cout << "-34386     Alvez    Joaquin-" << endl;
-    cout << "-34454     Echaburu        Iñaki-" << endl;
+    cout << "-34454     Echaburu        Inxaki-" << endl;
     cout << "-35005     Ruiz Diaz     Rodrigo-" << endl;
     cout << "---------------------------------" << endl;
     cout << endl;

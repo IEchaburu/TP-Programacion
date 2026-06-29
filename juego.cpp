@@ -11,7 +11,7 @@ int lanzarDado() {
 /// FUNCIONES INICIO DE PARTIDA ///
 void pedirNombre(char nombre[], int numeroJugador) {
     cout << "Ingrese el nombre del jugador " << numeroJugador << ": ";
-    
+
     if (cin.peek() == '\n') {
         cin.ignore(1000, '\n'); // Ignora el salto de linea anterior
     }
@@ -54,7 +54,7 @@ void cargarDadosViento(int vientos[], bool modoSimulado) {
  // int DadosDisponibles = 5;
 
 int compararDados(int tiradaDados[], int &dadosDisponibles, int viento1, int viento2, int dadosValidos[], int &contadorValido) {
-    int dadosBloqueados = 0;  
+    int dadosBloqueados = 0;
     int puntaje = 0;
 
     for (int i = 0; i < dadosDisponibles; i++) {
@@ -71,24 +71,20 @@ int compararDados(int tiradaDados[], int &dadosDisponibles, int viento1, int vie
 }
 
 
-bool esTormentaPerfecta(int tiradaDados[], int cantidadTirada, int viento1, int viento2) {
+bool esTormentaPerfecta(int dadosValidos[], int dadosDisponibles) {
 
-    if (cantidadTirada <= 0) {
+    if (dadosDisponibles <= 1) {
         return false;
     }
 
-    int valorReferencia = tiradaDados[0];
+    int auxiliardado = dadosValidos[0];
 
-    // Aca se verifica si el primer dado es un viento bloqueado
-    if (valorReferencia == viento1 || valorReferencia == viento2) {
-        return false;
-    }
-
-    for (int i = 1; i < cantidadTirada; i++) {
-        if (tiradaDados[i] != valorReferencia) {
+    for (int i = 1; i < dadosDisponibles; i++) {
+        if(dadosValidos[i]!=auxiliardado) {
             return false;
         }
     }
+
 
     return true;
 }
@@ -111,9 +107,9 @@ int procesarTirada(int dados[], int cantidadDisponible, int vientos[], int &dado
     if (disponibles == 0) {
         destruccionTotal = true;
         return 0;
-    } 
+    }
 
-    if (esTormentaPerfecta(dados, cantidadTirada, vientos[0], vientos[1])) {
+    if (esTormentaPerfecta(dadosValidos, disponibles)) {
         tormentaPerfecta = true;
         return puntajeTirada * 2;
     }
