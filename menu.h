@@ -13,4 +13,7 @@ void opcionesMenuPrincipal();
 //Muestra el modo de juego
 void elegirModoJuego(char nombreRecord[], int &puntajeRecord);
 
+// Muestra las reglas del juego
+void mostrarReglas();
+
 #endif
