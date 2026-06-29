@@ -269,7 +269,7 @@ void jugarModoUnJugador(char nombreRecord[], int &puntajeRecord, bool modoSimula
         cout << "Puntaje final de " << nombreJugador << ": " << puntajeTotal << endl;
 
         actualizarRecord(nombreRecord, puntajeRecord, nombreJugador, puntajeTotal);
-        mostrarEstadisticas(nombreRecord, puntajeRecord);
+        //mostrarEstadisticas(nombreRecord, puntajeRecord);
 
         jugarDeNuevo = preguntarOtraPartida();
 
@@ -325,7 +325,7 @@ void jugarModoDosJugadores(char nombreRecord[], int &puntajeRecord, bool modoSim
 
         actualizarRecord(nombreRecord, puntajeRecord, nombreJugador1, puntajeJugador1);
         actualizarRecord(nombreRecord, puntajeRecord, nombreJugador2, puntajeJugador2);
-        mostrarEstadisticas(nombreRecord, puntajeRecord);
+        //mostrarEstadisticas(nombreRecord, puntajeRecord);
 
         jugarDeNuevo = preguntarOtraPartida();
 
